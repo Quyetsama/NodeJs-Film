@@ -1,0 +1,22 @@
+<%- include('partials/header'); -%>
+
+    <div class="mt-4">
+      <h1 style="margin-top: 100px;">Thêm Phim</h1>
+          <form method="POST" action="/films/store">
+              <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <input type="text" id="category" class="form-control" placeholder="Category" name="category">
+              </div>
+              <div class="mb-3">
+                <label for="imageUrl" class="form-label">Image url</label>
+                <input type="text" id="imageUrl" class="form-control" placeholder="imageurl" name="imageurl">
+              </div>
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" id="title" class="form-control" placeholder="title" name="title">
+              </div>
+              <button type="submit" class="btn btn-primary">Thêm</button>
+          </form>
+    </div>
+
+<%- include('partials/footer'); -%>

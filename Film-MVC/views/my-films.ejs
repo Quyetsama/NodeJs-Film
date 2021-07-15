@@ -1,0 +1,41 @@
+<%- include('partials/header'); -%>
+
+    <div class="mt-4">
+        <h3 style="margin-top: 100px;">Danh sách phim của tôi</h3>
+
+        <table class="table mt-4">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Category</th>
+                <th scope="col" colspan="2">Episodes</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0; i<films.length; i++){ %>
+                <tr>
+                    <th scope="row"><%= i+1 %></th>
+                    <td><%= films[i].title %></td>
+                    <td><%= films[i].category %></td>
+                    <td><%= films[i].episodes.length %></td>
+                    <td>
+                        <a href="/films/<%= films[i]._id %>/edit" class="btn btn-primary" style="width: 100px;">Edit</a>
+
+                        <form action="/films/<%= films[i]._id %>/delete" method="POST">
+                            <button type="submit" class="btn btn-danger" style="margin-top: 10px; width: 100px;">Delete</button>
+                        </form>
+                        <!-- <a type="submit" style="text-decoration: none" href="/films/<%= films[i]._id %>/delete" class="btn btn-link" data-id="<%= films[i]._id %>">Delete</a> -->
+                        
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+          </table>
+    </div>
+
+
+
+
+
+<%- include('partials/footer'); -%>

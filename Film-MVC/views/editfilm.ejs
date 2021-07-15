@@ -1,0 +1,35 @@
+<%- include('partials/header'); -%>
+
+    <div class="mt-4">
+      <h1 style="margin-top: 100px;">Sửa Phim</h1>
+          <form method="POST" action="/films/<%= film._id %>/update">
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" id="title" class="form-control" placeholder="title" value="<%= film.title %>" name="title">
+              </div>
+              <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <input type="text" id="category" class="form-control" placeholder="Category" value="<%= film.category %>" name="category">
+              </div>
+
+              <% for(var i=0; i<film.episodes.length; i++){ %>
+              <div class="mb-3">
+                <label for="episode" class="form-label">Episode <%= i+1 %></label>
+                <input type="text" id="episode" class="form-control" placeholder="Url episode" value="<%= film.episodes[i].url %>" name="episode">
+              </div>
+              <% } %>
+
+              <div class="mb-3">
+                <label for="episode" class="form-label">Episode new</label>
+                <input type="text" id="episode" class="form-control" placeholder="Url episode" value="" name="episode">
+              </div>
+
+              <div class="mb-3">
+                <label for="imageUrl" class="form-label">Image url</label>
+                <input type="text" id="imageUrl" class="form-control" placeholder="imageurl" value="<%= film.imageUrl %>" name="imageurl">
+              </div>
+              <button type="submit" class="btn btn-primary">Xác nhận</button>
+          </form>
+    </div>
+
+<%- include('partials/footer'); -%>
