@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const slug = require('mongoose-slug-generator');
+const mongooseDelete = require('mongoose-delete');
 
-mongoose.plugin(slug);
+
+
 
 const Schema = mongoose.Schema;
 
@@ -18,7 +20,17 @@ const Film = new Schema({
     title: String,
     slug: { $type: String, slug: "title", unique: true }
     },
-    { typeKey: '$type' }
+    { typeKey: '$type',
+      timestamps: true
+    } 
 );
+
+
+// Add plugins
+mongoose.plugin(slug);
+Film.plugin(mongooseDelete, { 
+  deletedAt : true,
+  overrideMethods: 'all' 
+});
 
 module.exports = mongoose.model('Film', Film);

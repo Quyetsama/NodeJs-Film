@@ -7,11 +7,10 @@ class FilmController {
         Film.findOne({slug: req.params.slug})
             .then(film => {
                 console.log(film);
-                res.render("playfilm",{
-                    film: film,
-                    episode: parseInt(req.params.episode)
-                });
+                // res.json(film);
+                res.render("playfilm",{film, tap: parseInt(req.params.episode)});
             })
+            .catch(next);
     }
 
     // [GET] /films/create
@@ -33,6 +32,7 @@ class FilmController {
             imageUrl: req.body.imageurl,
             title: req.body.title
         }
+        console.log(formData);
 
         const film = new Film(formData);
         film.save()
@@ -89,9 +89,23 @@ class FilmController {
             .catch(next);
     }
 
-    // [POST] /films/:id/delete
+    // [POST or GET] /films/:id/delete
     delete(req, res, next){
+        Film.delete({ _id: req.params.id })
+            .then(() => res.redirect("back"))
+            .catch(next);
+    }
+
+    // [POST or GET] /films/:id/forcedelete
+    forceDelete(req, res, next){
         Film.deleteOne({ _id: req.params.id })
+            .then(() => res.redirect("back"))
+            .catch(next);
+    }
+
+    // [PATCH or GET] /films/:id/restore
+    restore(req, res, next){
+        Film.restore({ _id: req.params.id })
             .then(() => res.redirect("back"))
             .catch(next);
     }

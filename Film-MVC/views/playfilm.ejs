@@ -1,18 +1,18 @@
 <%- include('partials/header'); -%>
     
-    <h1><%= film.title %> - Tập <%= film.episodes[episode-1].episode %></h1>
+    <h1 style="margin-top: 100px;"><%= film.title %> - Tập <%= film.episodes[tap-1].episode %></h1>
     <div class="row">
         <% for(i=1;i<=film.episodes.length;i++){ %>
         <div class="col-md-1">
                 <div class="card-body">
-                <a href="/films/<%= film.slug %>/<%= i %>" class="btn btn-primary">Tập <%= i %></a>
+                    <a href="/films/<%= film.slug %>/<%= i %>" class="btn btn-primary">Tập <%= i %></a>
                 </div>
         </div>
         <% } %>
     </div>
 
-    <!-- <iframe width="1000" height="500" src="https://ok.ru/videoembed/<%= film.episodes[episode-1].url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-    <iframe width="1000" height="500" src="<%= film.episodes[episode-1].url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    
+    <iframe width="1000" height="500" src="<%= film.episodes[tap-1].url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
